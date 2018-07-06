@@ -32,6 +32,13 @@ bool ADXL345::SetPowerControl(bool link, bool autoSleep, bool measure, bool slee
 	return Write(Register::POWER_CTL, &regval, 1);
 }
 
+bool ADXL345::SetDataFormat(bool selfTest, Range range)
+{
+	uint8_t regval = static_cast<uint8_t>(range);
+	if (selfTest) { regval |= 0x80; }
+	return Write(Register::DATA_FORMAT, &regval, 1);
+}
+
 bool ADXL345::ReadSensorData(ADXL345::SensorData& data)
 {
 	return Read(Register::DATA_FORMAT, &data, sizeof(data));

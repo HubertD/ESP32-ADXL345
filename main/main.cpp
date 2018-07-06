@@ -30,6 +30,7 @@ void app_main()
 
 	ADXL345 adxl(i2c_port, false);
 	printf(adxl.Check() ? "ADXL check ok.\n" : "ADXL check not ok.\n");
+	adxl.SetDataFormat(false, ADXL345::Range::Range_16g);
 	adxl.SetPowerControl(false, false, true, false);
 
 	ADXL345::SensorData acc;

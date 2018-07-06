@@ -5,6 +5,14 @@
 class ADXL345
 {
 	public:
+		enum class Range
+		{
+			Range_2g = 0x00,
+			Range_4g = 0x01,
+			Range_8g = 0x02,
+			Range_16g = 0x03
+		};
+
 		class SensorData
 		{
 			public:
@@ -23,6 +31,7 @@ class ADXL345
 		ADXL345(i2c_port_t i2c, bool alternateAddress);
 		bool Check();
 		bool SetPowerControl(bool link, bool autoSleep, bool measure, bool sleep);
+		bool SetDataFormat(bool selfTest, Range range);
 		bool GetDeviceId(uint8_t& deviceId);
 		bool ReadSensorData(SensorData& data);
 

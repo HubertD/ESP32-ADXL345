@@ -1,0 +1,5 @@
+#pragma once
+
+#define WIFI_SSID "TheSSID"
+#define WIFI_PASSWORD "Secret"
+
